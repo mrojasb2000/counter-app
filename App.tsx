@@ -22,14 +22,19 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.textL}>My Counter App!</Text>
-      <Text style={styles.textXL}>{count}</Text>
+      <Text style={[styles.text, styles.textL]}>My Counter App!</Text>
+      <Text style={[styles.text, styles.textXL]}>{count}</Text>
       <Pressable
-        style={styles.floatingButton}
+        style={[styles.floatingButton, styles.addOneFloatingButton]}
         onPress={() => setCount(count + 1)}
         onPressIn={handlePressIn}
         onPressOut={handlePressOut}>
         <Text style={[styles.textL]}>+1</Text>
+      </Pressable>
+      <Pressable
+        style={[styles.floatingButton, styles.resetFloatingButton]}
+        onPress={() => setCount(0)}>
+        <Text style={[styles.textL]}> 0 </Text>
       </Pressable>
       <StatusBar style="auto" />
     </View>
@@ -43,20 +48,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  text:{
+    fontWeight: 500,
+    color: '#fff',
+  },
   textL: {
     fontSize: 20,
-    fontWeight: 500,
-    color: '#fff'
   },
   textXL: {
     fontSize: 40,
-    fontWeight: 500,
-    color: '#fff'
   },
   floatingButton: {
     position: 'absolute',
-    bottom: 60,
-    right: 40,
     backgroundColor: '#d9c667',
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 4 },
@@ -66,6 +69,14 @@ const styles = StyleSheet.create({
     padding: 25,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  addOneFloatingButton: {
+    bottom: 60,
+    right: 40,
+  },
+  resetFloatingButton: {
+    bottom: 60,
+    left: 40,
   }
 });
 
