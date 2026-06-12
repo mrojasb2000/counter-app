@@ -2,6 +2,7 @@ import { StyleSheet, Text, Pressable, ViewStyle, TextStyle } from 'react-native'
 
 interface Props {
     label: string
+    position: 'left' | 'right';
 
     // actions
     OnPress?: () => void;
@@ -13,10 +14,11 @@ interface Props {
     labelStyle?: TextStyle;
 }
 
-const Floating = ({label, OnPress, OnPressIn, OnPressOut, buttonStyle, labelStyle }: Props) => {  
+const Floating = ({label, position, OnPress, OnPressIn, OnPressOut, buttonStyle, labelStyle }: Props) => {  
+  const currentPositionStyle = position === 'right' ? styles.positionRight : styles.positionLeft;
   return (
     <Pressable
-        style={[styles.floatingButton, buttonStyle]}
+        style={[styles.floatingButton, currentPositionStyle, buttonStyle]}
         onPress={OnPress}
         onPressIn={OnPressIn}
         onPressOut={OnPressOut}>
@@ -37,7 +39,15 @@ const styles = StyleSheet.create({
     padding: 25,
     alignItems: 'center',
     justifyContent: 'center',
-  }
+  },
+  positionRight: {
+    bottom: 60,
+    right: 40,
+  },
+  positionLeft: {
+    bottom: 60,
+    left: 40,
+  },
 });
 
 export default Floating;
