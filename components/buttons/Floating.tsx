@@ -18,7 +18,7 @@ const Floating = ({label, position, OnPress, OnPressIn, OnPressOut, buttonStyle,
   const currentPositionStyle = position === 'right' ? styles.positionRight : styles.positionLeft;
   return (
     <Pressable
-        style={[styles.floatingButton, currentPositionStyle, buttonStyle]}
+        style={({ pressed }) => [styles.floatingButton, currentPositionStyle, pressed ? styles.pressed : {}, buttonStyle]}
         onPress={OnPress}
         onPressIn={OnPressIn}
         onPressOut={OnPressOut}>
@@ -47,6 +47,12 @@ const styles = StyleSheet.create({
   positionLeft: {
     bottom: 60,
     left: 40,
+  },
+  pressed: {
+    opacity: 0.8,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    elevation: 1,
   },
 });
 
