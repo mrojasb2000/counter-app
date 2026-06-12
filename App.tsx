@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState, useRef } from 'react';
-import { Pressable, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
+import Floating from './components/buttons/Floating';
 
 export default function App() {
   const [count, setCount] = useState(10);
@@ -24,18 +25,20 @@ export default function App() {
     <View style={styles.container}>
       <Text style={[styles.text, styles.textL]}>My Counter App!</Text>
       <Text style={[styles.text, styles.textXL]}>{count}</Text>
-      <Pressable
-        style={[styles.floatingButton, styles.addOneFloatingButton]}
-        onPress={() => setCount(count + 1)}
-        onPressIn={handlePressIn}
-        onPressOut={handlePressOut}>
-        <Text style={[styles.textL]}>+1</Text>
-      </Pressable>
-      <Pressable
-        style={[styles.floatingButton, styles.resetFloatingButton]}
-        onPress={() => setCount(0)}>
-        <Text style={[styles.textL]}> 0 </Text>
-      </Pressable>
+      <Floating
+        label="Add 1"
+        OnPress={() => setCount(count + 1)}
+        OnPressIn={handlePressIn}
+        OnPressOut={handlePressOut}
+        buttonStyle={styles.addOneFloatingButton}
+        labelStyle={styles.textL}
+      />
+      <Floating
+        label=" Reset "
+        OnPress={() => setCount(0)}
+        buttonStyle={styles.resetFloatingButton}
+        labelStyle={styles.textL}
+      />
       <StatusBar style="auto" />
     </View>
   );
@@ -57,18 +60,6 @@ const styles = StyleSheet.create({
   },
   textXL: {
     fontSize: 40,
-  },
-  floatingButton: {
-    position: 'absolute',
-    backgroundColor: '#d9c667',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.3,
-    elevation: 3,
-    borderRadius: 40,
-    padding: 25,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   addOneFloatingButton: {
     bottom: 60,
