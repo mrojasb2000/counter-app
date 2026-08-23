@@ -23,8 +23,8 @@ export default function App() {
     <View style={styles.container}>
       <Text style={[styles.text, styles.textL]}>My Counter App!</Text>
       <Text style={[styles.text, styles.textXL]}>{count}</Text>
-      <FloatingButton label={"-1"} onPress={handleMinusOne} onLongPress={handleReset} styles={styles.floatingButtonMinusOne}/>
-      <FloatingButton label={"+1"} onPress={handlePlusOne} onLongPress={handleReset} styles={styles.floatingButtonPlusOne}/>
+      <FloatingButton label={"-1"} onPress={handleMinusOne} onLongPress={handleReset} styles={[styles.floatingButton, styles.floatingButtonLeft]}/>
+      <FloatingButton label={"+1"} onPress={handlePlusOne} onLongPress={handleReset} styles={[styles.floatingButton, styles.floatingButtonRight]}/>
       <StatusBar style="auto" />
     </View>
   );
@@ -47,10 +47,9 @@ const styles = StyleSheet.create({
   textXL: {
     fontSize: 40,
   },
-  floatingButtonMinusOne: {
+  floatingButton: {
     position: 'absolute',
     bottom: 80,
-    left: 80,
     backgroundColor: '#65558F',
     padding: 20,
     borderRadius: 15,
@@ -60,18 +59,11 @@ const styles = StyleSheet.create({
     elevation: 3,
     shadowRadius: 4,
   },
-  floatingButtonPlusOne: {
-    position: 'absolute',
-    bottom: 80,
+  floatingButtonLeft: {
+    left: 80,
+  },
+  floatingButtonRight: {
     right: 80,
-    backgroundColor: '#65558F',
-    padding: 20,
-    borderRadius: 15,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.3,
-    elevation: 3,
-    shadowRadius: 4,
   }
 });
 
