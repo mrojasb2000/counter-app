@@ -5,8 +5,8 @@ interface Props {
   label: string,
 
   // Actions
-  onPress: () => void;
-  onLongPress: () => void;
+  onPress?: () => void;
+  onLongPress?: () => void;
 
   // Styles
   styles: StyleProp<ViewStyle>
