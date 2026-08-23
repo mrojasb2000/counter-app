@@ -5,7 +5,6 @@ import FloatingButton from './components/atoms/FloatingButton';
 
 export default function App() {
   const [count, setCount] = useState(0);
-  const intervalRef = useRef<number | null>(null);
 
   const handlePlusOne = () => {
     setCount(prev => prev + 1);
