@@ -7,20 +7,6 @@ export default function App() {
   const [count, setCount] = useState(0);
   const intervalRef = useRef<number | null>(null);
 
-  const handlePressIn = () => {
-    if (intervalRef.current) clearInterval(intervalRef.current);
-    intervalRef.current = setInterval(() => {
-      setCount(prev => prev + 1);
-    }, 150);
-  };
-
-  const handlePressOut = () => {
-    if (intervalRef.current) {
-      clearInterval(intervalRef.current);
-      intervalRef.current = null;
-    }
-  };
-
   const handlePlusOne = () => {
     setCount(prev => prev + 1);
   }
