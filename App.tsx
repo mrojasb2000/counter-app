@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
-import { useState, useRef } from 'react';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { useState } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 import FloatingButton from './components/atoms/FloatingButton';
 
 export default function App() {
