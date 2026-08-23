@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState, useRef } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
-import Floating from './components/buttons/Floating';
+import FloatingButton from './components/atoms/FloatingButton';
 
 export default function App() {
   const [count, setCount] = useState(0);
@@ -30,41 +30,16 @@ export default function App() {
     setCount(prev => prev - 1);
   }
 
+  const handleReset = () => {
+    setCount(0);
+  }
+
   return (
     <View style={styles.container}>
       <Text style={[styles.text, styles.textL]}>My Counter App!</Text>
       <Text style={[styles.text, styles.textXL]}>{count}</Text>
-      {/* <Floating
-        label="Add 1"
-        position='right'
-        OnPress={() => setCount(count + 1)}
-        OnPressIn={handlePressIn}
-        OnPressOut={handlePressOut}
-        labelStyle={styles.textL}
-      /> */}
-      {/* <Floating
-        label=" Reset "
-        position='left'
-        OnPress={() => setCount(0)}
-        labelStyle={styles.textL}
-        buttonStyle={{ backgroundColor: '#67d9b7' }}
-      /> */}
-      <Pressable style={({ pressed }) => [
-        styles.floatingButtonMinusOne,
-        {
-          backgroundColor: pressed ? '#aaaaab' : '#65558F', // Dark gray on press, purple normally
-        },
-      ]} onPress={handleMinusOne} onLongPress={() => setCount(0)}>
-        <Text style={{ color: 'white'}}>-1</Text>
-      </Pressable>
-      <Pressable style={({ pressed }) => [
-        styles.floatingButtonPlusOne,
-        {
-          backgroundColor: pressed ? '#aaaaab' : '#65558F', // Dark gray on press, purple normally
-        },
-      ]} onPress={handlePlusOne} onLongPress={() => setCount(0)}>
-        <Text style={{ color: 'white'}}>+1</Text>
-      </Pressable>
+      <FloatingButton label={"-1"} onPress={handleMinusOne} onLongPress={handleReset} styles={styles.floatingButtonMinusOne}/>
+      <FloatingButton label={"+1"} onPress={handlePlusOne} onLongPress={handleReset} styles={styles.floatingButtonPlusOne}/>
       <StatusBar style="auto" />
     </View>
   );
